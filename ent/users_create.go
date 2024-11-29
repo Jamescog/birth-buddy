@@ -65,6 +65,14 @@ func (uc *UsersCreate) SetBirthdayCount(i int) *UsersCreate {
 	return uc
 }
 
+// SetNillableBirthdayCount sets the "birthday_count" field if the given value is not nil.
+func (uc *UsersCreate) SetNillableBirthdayCount(i *int) *UsersCreate {
+	if i != nil {
+		uc.SetBirthdayCount(*i)
+	}
+	return uc
+}
+
 // Mutation returns the UsersMutation object of the builder.
 func (uc *UsersCreate) Mutation() *UsersMutation {
 	return uc.mutation
@@ -104,6 +112,10 @@ func (uc *UsersCreate) defaults() {
 		v := users.DefaultIsPremium
 		uc.mutation.SetIsPremium(v)
 	}
+	if _, ok := uc.mutation.BirthdayCount(); !ok {
+		v := users.DefaultBirthdayCount
+		uc.mutation.SetBirthdayCount(v)
+	}
 }
 
 // check runs all checks and user-defined validators on the builder.
@@ -124,11 +136,6 @@ func (uc *UsersCreate) check() error {
 	}
 	if _, ok := uc.mutation.BirthdayCount(); !ok {
 		return &ValidationError{Name: "birthday_count", err: errors.New(`ent: missing required field "Users.birthday_count"`)}
-	}
-	if v, ok := uc.mutation.BirthdayCount(); ok {
-		if err := users.BirthdayCountValidator(v); err != nil {
-			return &ValidationError{Name: "birthday_count", err: fmt.Errorf(`ent: validator failed for field "Users.birthday_count": %w`, err)}
-		}
 	}
 	return nil
 }

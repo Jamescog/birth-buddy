@@ -23,7 +23,7 @@ func (Users) Fields() []ent.Field {
 		field.Bool("is_premium").
 			Default(false),
 
-		field.Int("birthday_count").Positive(),
+		field.Int("birthday_count").Default(0),
 	}
 }
 

@@ -15,7 +15,7 @@ var (
 		{Name: "username", Type: field.TypeString, Unique: true, Nullable: true},
 		{Name: "full_name", Type: field.TypeString},
 		{Name: "is_premium", Type: field.TypeBool, Default: false},
-		{Name: "birthday_count", Type: field.TypeInt},
+		{Name: "birthday_count", Type: field.TypeInt, Default: 0},
 	}
 	// UsersTable holds the schema information for the "users" table.
 	UsersTable = &schema.Table{

@@ -50,8 +50,8 @@ var (
 	TelegramIDValidator func(int) error
 	// DefaultIsPremium holds the default value on creation for the "is_premium" field.
 	DefaultIsPremium bool
-	// BirthdayCountValidator is a validator for the "birthday_count" field. It is called by the builders before save.
-	BirthdayCountValidator func(int) error
+	// DefaultBirthdayCount holds the default value on creation for the "birthday_count" field.
+	DefaultBirthdayCount int
 )
 
 // OrderOption defines the ordering options for the Users queries.

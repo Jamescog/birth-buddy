@@ -23,6 +23,6 @@ func init() {
 	users.DefaultIsPremium = usersDescIsPremium.Default.(bool)
 	// usersDescBirthdayCount is the schema descriptor for birthday_count field.
 	usersDescBirthdayCount := usersFields[4].Descriptor()
-	// users.BirthdayCountValidator is a validator for the "birthday_count" field. It is called by the builders before save.
-	users.BirthdayCountValidator = usersDescBirthdayCount.Validators[0].(func(int) error)
+	// users.DefaultBirthdayCount holds the default value on creation for the birthday_count field.
+	users.DefaultBirthdayCount = usersDescBirthdayCount.Default.(int)
 }

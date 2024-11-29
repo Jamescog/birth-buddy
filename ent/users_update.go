@@ -156,11 +156,6 @@ func (uu *UsersUpdate) check() error {
 			return &ValidationError{Name: "telegram_id", err: fmt.Errorf(`ent: validator failed for field "Users.telegram_id": %w`, err)}
 		}
 	}
-	if v, ok := uu.mutation.BirthdayCount(); ok {
-		if err := users.BirthdayCountValidator(v); err != nil {
-			return &ValidationError{Name: "birthday_count", err: fmt.Errorf(`ent: validator failed for field "Users.birthday_count": %w`, err)}
-		}
-	}
 	return nil
 }
 
@@ -360,11 +355,6 @@ func (uuo *UsersUpdateOne) check() error {
 	if v, ok := uuo.mutation.TelegramID(); ok {
 		if err := users.TelegramIDValidator(v); err != nil {
 			return &ValidationError{Name: "telegram_id", err: fmt.Errorf(`ent: validator failed for field "Users.telegram_id": %w`, err)}
-		}
-	}
-	if v, ok := uuo.mutation.BirthdayCount(); ok {
-		if err := users.BirthdayCountValidator(v); err != nil {
-			return &ValidationError{Name: "birthday_count", err: fmt.Errorf(`ent: validator failed for field "Users.birthday_count": %w`, err)}
 		}
 	}
 	return nil
